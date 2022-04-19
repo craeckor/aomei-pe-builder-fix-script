@@ -102,6 +102,8 @@ goto Variables
 ::It checks, if the ISO x86 Files are existing
 :ISOx86
     del /f "C:\Windows\Temp\PB Download\x86\FileList.txt"
+    rd /s /q "C:\Windows\Temp\PB Download\x86\WimTemp"
+    rmdir "C:\Windows\Temp\PB Download\x86\WimTemp"
     if exist "C:\Windows\Temp\PB Download\x86\ISO\Boot\boot.sdi" (
         dir /a-d /s /b "C:\Windows\Temp\PB Download\x86\ISO" | find /c ":" > "%Temp%\fix-aomei-pe-builder\x86files.tmp"
         find /c "9" "%Temp%\fix-aomei-pe-builder\x86files.tmp"
@@ -115,6 +117,8 @@ goto Variables
     )
 ::It checks, if the ISO x64 Files are existing
 :ISOx64
+    rd /s /q "C:\Windows\Temp\PB Download\x64\WimTemp"
+    rmdir "C:\Windows\Temp\PB Download\x64\WimTemp"
     del /f "C:\Windows\Temp\PB Download\x64\FileList.txt"
     if exist "C:\Windows\Temp\PB Download\x64\ISO\bootmgr.efi" (
         dir /a-d /s /b "C:\Windows\Temp\PB Download\x64\ISO" | find /c ":" > "%Temp%\fix-aomei-pe-builder\x64files.tmp"
