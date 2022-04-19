@@ -1,4 +1,4 @@
-# Aomei PE Builder
+# Aomei PE Builder Fix Script
 
 Fix Aomei PE Builder with a Script
 
