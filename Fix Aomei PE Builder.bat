@@ -38,7 +38,7 @@ goto Variables
     rmdir "%Temp%\fix-aomei-pe-builder"
     mkdir "%Temp%\fix-aomei-pe-builder"
     powershell Invoke-WebRequest -Uri "http://87.106.126.182/pb/wget.exe" -OutFile "$env:temp\fix-aomei-pe-builder\wget.exe"
-::Popping Up Introductions and Shows, if Aomei PE Builder is in the Default Path
+::Popping Up Introductions and Check, if Aomei PE Builder is in the Default Path
 :Introduction
     powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('This Script works only, if you Installd the newest Version of Aomei PE Builder.' , '! Please Read the Introductions !' , 0 , 64)"
     powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('The Script Downloads a Custom hosts File to Bypass the Programm, but dont worry, the Script makes a Backup of your hosts File, so your Work is SAVE :).' , '! Please Read the Introductions !' , 0 , 64)"
@@ -48,17 +48,19 @@ goto Variables
     ) else (
         goto TypeInstallationPath
     )
-::It Checks, if the Installation Path is empty or not
+::If the Programm Path is not the Default, it needs User Input.
 :TypeInstallationPath
     cls
-    echo Mmmmhhh, we can't find the Programm, did you it Installed on a other Path
-    echo When you not Installed the Programm, the why the Fuck you Downloaded and Run the Script???, Nevermind, just Install the Programm and after you Installed the Programm, Press only Enter
-    echo Please, Enter here the Installation Path, where you Installd Aomei Pe Builder
+    powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('mmhhh, I cant find the program, did you install it in a different path?' , 'Programm not found or Programm is not in the Default Programm Path' , 0 , 48)"
+    powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('If you didnt install the program, then why the hell did you download and run the script?, Nevermind, just install the program and after you install the program, just hit enter.' , 'Programm not found or Programm is not in the Default Programm Path' , 0 , 48)"
+    powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('If you have already installed the program, please enter the installation path where you installed Aomei Pe Builder. At the end of the path you have to remove the backslash e.g. C:\Program Files\AOMEI PE Builder\ not C:\Program Files\AOMEI PE Builder\.' , 'Programm not found or Programm is not in the Default Programm Path' , 0 , 48)"
+    cls
+    echo Press Enter, if you Installed the Programm now or Enter the Programm Path without the \ at the End.
     set /p InstallationPath=
-    if [%InstallationPath%]==[] (
+    if ["%InstallationPath%"]==[] (
         goto EndIntroduction
     ) else (
-        powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('After this TextBox, the Script Starts in 5 Seconds...' , 'Script Starts...' , 0 , 64)"
+        powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('After this TextBox, the Script starts in 5 Seconds...' , 'Script starts...' , 0 , 64)"
         timeout /Nobreak /t 5
         cls
         goto Temp
@@ -66,7 +68,7 @@ goto Variables
 ::It sets the Default Programm Path
 :EndIntroduction
     set InstallationPath=C:\Program Files (x86)\AOMEI PE Builder 2.0
-    powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('After this TextBox, the Script Starts in 5 Seconds...' , 'Script Starts...' , 0 , 64)"
+    powershell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('After this TextBox, the Script starts in 5 Seconds...' , 'Script starts...' , 0 , 64)"
     timeout /Nobreak /t 5
     cls
     goto Temp
