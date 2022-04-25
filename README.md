@@ -10,6 +10,6 @@ Fix Aomei PE Builder with a Script
 
  - In the Version 1.0.1.4 and also in Future Versions are two new Files existing, this Files are Designed for half Silent. It existing for the Online and the Local File, For the Public: You guys don't need the "Local" File. Only the File, without the "Local" in the Name.
 Following are Changed in the half Silent Files: 
- - No Text Boxes
- - No cls
- - Text for Other Programm Path moved to echo Outputs
+ - - No Text Boxes
+ - - No cls
+ - - Text for Other Programm Path moved to echo Outputs
